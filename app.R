@@ -1,4 +1,4 @@
-ibrary(shiny)
+library(shiny)
 
 #UI section -------
 fluidPage(
