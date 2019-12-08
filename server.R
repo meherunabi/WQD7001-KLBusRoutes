@@ -1,16 +1,3 @@
-ibrary(shiny)
-
-#UI section -------
-fluidPage(
-  titlePanel( title="Customer Information"),
-  sidebarLayout(
-    sidebarPanel(
-      selectInput ("location","Enter Location", choices = my_data$Area)
-    ),
-    mainPanel(
-      tableOutput("mylocation")
-    )
-  ))
 
 #----------------------------------------
 #Server Section#######################
@@ -22,6 +9,4 @@ fluidPage(
     locfilter<-subset(my_data, my_data$Area == input$location)
   })
 }
-#-----
-#---------------------
-shinyApp(ui=ui,server=server)
+
