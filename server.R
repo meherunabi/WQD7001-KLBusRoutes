@@ -1,13 +1,27 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+ibrary(shiny)
 
-library(shiny)
+#UI section -------
+fluidPage(
+  titlePanel( title="Customer Information"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput ("location","Enter Location", choices = my_data$Area)
+    ),
+    mainPanel(
+      tableOutput("mylocation")
+    )
+  ))
 
-# Run the application 
-shinyApp(ui = ui, server = server)
+#----------------------------------------
+#Server Section#######################
+
+
+  function(input,output)
+{
+  output$mylocation <- renderTable({
+    locfilter<-subset(my_data, my_data$Area == input$location)
+  })
+}
+#-----
+#---------------------
+shinyApp(ui=ui,server=server)
